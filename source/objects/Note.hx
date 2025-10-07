@@ -266,7 +266,7 @@ class Note extends FlxSprite
 	{
 		super();
 
-		mania = PlayState.mania;
+		mania = PlayState.SONG.mania;
 
 		animation = new PsychAnimationController(this);
 
