@@ -3,7 +3,7 @@ package backend;
 typedef SwagSection =
 {
 	var sectionNotesArray:Dynamic;
-	var sectionBeats::Float;
+	var sectionBeats:Float;
 	var mustHitSection:Bool;
 	var gfSection:Bool;
 	var bpm:Float;
