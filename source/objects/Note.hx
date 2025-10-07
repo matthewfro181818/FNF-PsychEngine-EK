@@ -78,6 +78,9 @@ class Note extends FlxSprite
 
 	public static var keysShit:Map<Int, Map<String, Dynamic>> = EKData.keysShit;
 
+	var defaultWidth:Float = 0;
+	var defaultHeight:Float = 0;
+	
 	// End of extra keys stuff
 	//////////////////////////////////////////////////
 
@@ -382,6 +385,7 @@ class Note extends FlxSprite
 	static var _lastValidChecked:String; //optimization
 	public var originalHeight:Float = 6;
 	public var correctionOffset:Float = 0; //dont mess with this
+	public var originalHeightForCalcs:Float = 6;
 	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '') {
 		if(prefix == null) prefix = '';
 		if(texture == null) texture = '';
