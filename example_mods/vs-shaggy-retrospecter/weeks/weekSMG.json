@@ -1,0 +1,31 @@
+{
+	"storyName": "shaggy 0.003% power!!!",
+	"difficulties": "Normal",
+	"hideFreeplay": false,
+	"weekBackground": "sky",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"pshaggy",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"god eater",
+			"icon-pshaggy",
+			[
+				0,
+				0,
+				20
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "what"
+}

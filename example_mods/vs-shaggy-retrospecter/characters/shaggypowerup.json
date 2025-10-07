@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "powerup",
+			"indices": [],
+			"name": "ushaggy_powerup"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "idle",
+			"indices": [],
+			"name": "ushaggy_powerup"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/shaggypowerup",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "whatshaggy",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-210,
+		50
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
