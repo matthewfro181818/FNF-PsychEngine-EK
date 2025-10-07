@@ -4,7 +4,6 @@ import haxe.Json;
 import lime.utils.Assets;
 
 import backend.Section;
-import backend.Section.SwagSection;
 
 typedef SwagSong =
 {

@@ -2,7 +2,7 @@ package backend;
 
 typedef SwagSection =
 {
-	var sectionNotesArray:Dynamic;
+	var sectionNotes:Array<Dynamic>;
 	var sectionBeats:Float;
 	var mustHitSection:Bool;
 	var gfSection:Bool;
@@ -13,7 +13,7 @@ typedef SwagSection =
 
 class Section
 {
-	public var sectionNotesArray:Dynamic = [];
+	public var sectionNotes:Array<Dynamic> = [];
 
 	public var sectionBeats:Float = 4;
 	public var gfSection:Bool = false;
@@ -22,6 +22,6 @@ class Section
 	public function new(sectionBeats:Float = 4)
 	{
 		this.sectionBeats = sectionBeats;
-		trace('test created section ' + sectionBeats);
+		trace('test created section: ' + sectionBeats);
 	}
 }
