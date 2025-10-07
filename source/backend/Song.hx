@@ -66,7 +66,9 @@ class Song
 	public var gfVersion:String = 'gf';
 	public var format:String = 'psych_v1';
 
-	private static function onLoadJson(songJson:Dynamic) // Convert old charts to newest format
+	var songJson:Dynamic;
+	
+	private static function onLoadJson()
 	{
 		if(songJson.gfVersion == null)
 		{
@@ -105,7 +107,7 @@ class Song
 		}
 	}
 
-	public static function convert(songJson:Dynamic) // Convert old charts to psych_v1 format
+	public static function convert() // Convert old charts to psych_v1 format
 	{
 		if(songJson.gfVersion == null)
 		{

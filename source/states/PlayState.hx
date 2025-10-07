@@ -1452,17 +1452,6 @@ class PlayState extends MusicBeatState
 		eventsPushed.push(event.event);
 	}
 
-	// called only once per different event (Used for precaching)
-	function eventPushed(event:EventNote) {
-		eventPushedUnique(event);
-		if(eventsPushed.contains(event.event)) {
-			return;
-		}
-
-		stagesFunc(function(stage:BaseStage) stage.eventPushed(event));
-		eventsPushed.push(event.event);
-	}
-
 	// called by every event with the same name
 	function eventPushedUnique(event:EventNote) {
 		switch(event.event) {

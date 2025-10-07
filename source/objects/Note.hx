@@ -1,5 +1,6 @@
 package objects;
 
+import backend.ExtraKeysHandler;
 import backend.animation.PsychAnimationController;
 import backend.NoteTypesConfig;
 
@@ -77,6 +78,9 @@ class Note extends FlxSprite
 
 	public static var keysShit:Map<Int, Map<String, Dynamic>> = EKData.keysShit;
 
+	var defaultWidth:Float = 0;
+	var defaultHeight:Float = 0;
+	
 	// End of extra keys stuff
 	//////////////////////////////////////////////////
 
@@ -206,20 +210,17 @@ class Note extends FlxSprite
 
 	public function defaultRGB()
 	{
-		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
-		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData];
+		var mania = 3;
+		if (PlayState.SONG != null) mania = PlayState.SONG.mania;
 
-		if (arr != null && noteData > -1 && noteData <= arr.length)
+		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[getIndex(mania, noteData)];
+		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[getIndex(mania, noteData)];
+
+		if (noteData > -1 /*&& noteData <= arr.length*/)
 		{
 			rgbShader.r = arr[0];
 			rgbShader.g = arr[1];
 			rgbShader.b = arr[2];
-		}
-		else
-		{
-			rgbShader.r = 0xFFFF0000;
-			rgbShader.g = 0xFF00FF00;
-			rgbShader.b = 0xFF0000FF;
 		}
 	}
 
@@ -268,7 +269,7 @@ class Note extends FlxSprite
 	{
 		super();
 
-		mania = PlayState.mania;
+		mania = PlayState.SONG.mania;
 
 		animation = new PsychAnimationController(this);
 
@@ -364,22 +365,18 @@ class Note extends FlxSprite
 		if(globalRgbShaders[noteData] == null)
 		{
 			var newRGB:RGBPalette = new RGBPalette();
-			var arr:Array<FlxColor> = (!PlayState.isPixelStage) ? ClientPrefs.data.arrowRGB[noteData] : ClientPrefs.data.arrowRGBPixel[noteData];
-			
-			if (arr != null && noteData > -1 && noteData <= arr.length)
+			globalRgbShaders[noteData] = newRGB;
+
+			var mania = 3;
+			if (PlayState.SONG != null) mania = PlayState.SONG.mania;
+
+			var arr:Array<FlxColor> = (!PlayState.isPixelStage) ? ClientPrefs.data.arrowRGB[ExtraKeysHandler.instance.data.keys[mania].notes[noteData]] : ClientPrefs.data.arrowRGBPixel[ExtraKeysHandler.instance.data.keys[mania].notes[noteData]];
+			if (noteData > -1 /*&& noteData <= arr.length*/)
 			{
 				newRGB.r = arr[0];
 				newRGB.g = arr[1];
 				newRGB.b = arr[2];
 			}
-			else
-			{
-				newRGB.r = 0xFFFF0000;
-				newRGB.g = 0xFF00FF00;
-				newRGB.b = 0xFF0000FF;
-			}
-			
-			globalRgbShaders[noteData] = newRGB;
 		}
 		return globalRgbShaders[noteData];
 	}
@@ -388,6 +385,7 @@ class Note extends FlxSprite
 	static var _lastValidChecked:String; //optimization
 	public var originalHeight:Float = 6;
 	public var correctionOffset:Float = 0; //dont mess with this
+	public var originalHeightForCalcs:Float = 6;
 	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '') {
 		if(prefix == null) prefix = '';
 		if(texture == null) texture = '';
